@@ -31,6 +31,7 @@ export type Project = {
   featured?: boolean;
   features?: string[];
   contribution?: string; // TODO: isi kontribusi pribadi
+  video?: string; // URL video demo (mp4/webm), diprioritaskan di atas image
   image?: string; // URL screenshot (diisi dari file .asset.json)
   github?: string; // TODO
   demo?: string; // TODO
