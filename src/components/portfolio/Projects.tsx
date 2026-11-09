@@ -7,7 +7,8 @@ import { Reveal, SectionHeader } from "./fx";
 
 const filters: ("All" | Category)[] = ["All", "Full-Stack", "Frontend", "Backend", "AI/ML", "Software Development"];
 
-function ShotPlaceholder({ className = "" }: { className?: string }) {
+function ShotPlaceholder({ className = "", src, alt = "" }: { className?: string; src?: string | undefined; alt?: string }) {
+  if (src) return <img src={src} alt={alt} loading="lazy" className={`object-cover border border-border ${className}`} />;
   return (
     <div className={`relative flex items-center justify-center overflow-hidden border border-dashed border-border placeholder-stripes ${className}`}>
       <span className="flex items-center gap-2 label-mono"><ImageIcon className="h-3.5 w-3.5" /> Screenshot placeholder</span>
@@ -30,7 +31,7 @@ function Featured({ p, i, onOpen }: { p: Project; i: number; onOpen: () => void 
   return (
     <Reveal>
       <button onClick={onOpen} className={`group grid w-full gap-8 border-t border-border py-12 text-left md:grid-cols-12 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-        <ShotPlaceholder className="aspect-[16/10] rounded-md transition-colors duration-500 group-hover:border-primary/50 md:col-span-7" />
+        <ShotPlaceholder src={p.image} alt={`Screenshot ${p.title}`} className="w-full aspect-[16/10] rounded-md transition-colors duration-500 group-hover:border-primary/50 md:col-span-7" />
         <div className="flex flex-col justify-between md:col-span-5">
           <div>
             <div className="mb-6 flex items-center justify-between">
@@ -116,7 +117,7 @@ export function Projects() {
         <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto border-border bg-background">
           {active && (
             <div>
-              <ShotPlaceholder className="mb-6 aspect-[16/9] rounded-md" />
+              <ShotPlaceholder src={active.image} alt={`Screenshot ${active.title}`} className="w-full mb-6 aspect-[16/9] rounded-md" />
               <div className="mb-2 flex flex-wrap gap-2">
                 {active.categories.map((c) => <span key={c} className="font-mono text-[11px] text-primary">#{c}</span>)}
               </div>

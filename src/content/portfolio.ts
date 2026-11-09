@@ -31,6 +31,7 @@ export type Project = {
   featured?: boolean;
   features?: string[];
   contribution?: string; // TODO: isi kontribusi pribadi
+  image?: string; // URL screenshot (diisi dari file .asset.json)
   github?: string; // TODO
   demo?: string; // TODO
 };
