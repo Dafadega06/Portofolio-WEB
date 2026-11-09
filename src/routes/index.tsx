@@ -1,23 +1,47 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import { About } from "@/components/portfolio/About";
+import { Skills } from "@/components/portfolio/Skills";
+import { Projects } from "@/components/portfolio/Projects";
+import { Experience } from "@/components/portfolio/Experience";
+import { TrainingEducation } from "@/components/portfolio/TrainingEducation";
+import { Contact } from "@/components/portfolio/Contact";
+import { BackToTop, Cursor, Loader, ScrollProgress } from "@/components/portfolio/fx";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Dafa Dega Wijaya — Full-Stack Web Developer & Software Engineer" },
+      { name: "description", content: "Portfolio Dafa Dega Wijaya, mahasiswa Teknik Informatika ITS dan Full-Stack Web Developer: proyek, skill, dan pengalaman." },
+      { property: "og:title", content: "Dafa Dega Wijaya — Full-Stack Web Developer" },
+      { property: "og:description", content: "Building digital solutions through code, logic, and innovation." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Loader />
+      <ScrollProgress />
+      <Cursor />
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <TrainingEducation />
+        <Contact />
+      </main>
+      <BackToTop />
+      <Toaster theme="dark" position="bottom-left" />
+    </>
   );
 }
