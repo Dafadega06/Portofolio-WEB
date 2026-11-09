@@ -20,7 +20,7 @@ export function Skills() {
         </div>
         <div className="border-t border-border">
           {skills.map((g, i) => {
-            const I = icons[g.icon];
+            const I = icons[g.icon] ?? Boxes;
             const isOpen = open.includes(g.id);
             return (
               <div key={g.id} className="border-b border-border">

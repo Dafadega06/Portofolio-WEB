@@ -194,9 +194,9 @@ export function NodeField() {
         if (n.y < 0 || n.y > h) n.vy *= -1;
       }
       for (let i = 0; i < nodes.length; i++) {
-        const a = nodes[i];
+        const a = nodes[i]!;
         for (let j = i + 1; j < nodes.length; j++) {
-          const b = nodes[j];
+          const b = nodes[j]!;
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < 130) {
             ctx.strokeStyle = `oklch(1 0 0 / ${0.08 * (1 - d / 130)})`;

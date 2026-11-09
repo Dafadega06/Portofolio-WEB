@@ -68,7 +68,7 @@ function Row({ p, n, onOpen }: { p: Project; n: number; onOpen: () => void }) {
   );
 }
 
-function LinkSlot({ href, label, icon: I }: { href?: string; label: string; icon: typeof Github }) {
+function LinkSlot({ href, label, icon: I }: { href?: string | undefined; label: string; icon: typeof Github }) {
   return href ? (
     <a href={href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm hover:border-primary hover:text-primary">
       <I className="h-4 w-4" /> {label}
